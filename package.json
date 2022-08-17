@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/The-Tome/Backend#readme",
   "dependencies": {
+    "@prisma/client": "^4.2.1",
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "prisma": "^4.2.1"
   }
 }
