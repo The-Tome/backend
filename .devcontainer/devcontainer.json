@@ -1,0 +1,21 @@
+// For format details, see https://aka.ms/devcontainer.json
+{
+	"name": "Backend",
+	"forwardPorts": [ 3001, 5432 ],
+	"dockerComposeFile": "docker-compose.yml",
+	"postCreateCommand": "npm install",
+	"remoteUser": "node",
+	"service": "backend",
+	"workspaceFolder": "/workspace",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint"
+			]
+		}
+	}
+}
