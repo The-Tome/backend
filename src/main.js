@@ -1,6 +1,8 @@
 const express = require('express')
-const Sentry = require('@sentry/node');
-const Tracing = require('@sentry/tracing');
+const Sentry = require('@sentry/node')
+const Tracing = require('@sentry/tracing')
+
+const cors = require('cors')
 
 const app = express()
 const port = 3001
@@ -24,8 +26,10 @@ app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 
+app.use(cors());
+
 app.get('/', (req, res) => {
-  res.send('Hello Browser!')
+  res.json({hello: 'Hello World'})
 })
 
 app.use(Sentry.Handlers.errorHandler());
