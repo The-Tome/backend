@@ -28,8 +28,14 @@ app.use(Sentry.Handlers.tracingHandler());
 
 app.use(cors());
 
+// app.get('/', (req, res) => {
+//   res.json({hello: 'Hello World'})
+// })
+
+const data = require("./example.json");
+
 app.get('/', (req, res) => {
-  res.json({hello: 'Hello World'})
+  res.json(data)
 })
 
 app.use(Sentry.Handlers.errorHandler());

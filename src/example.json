@@ -1,0 +1,12 @@
+{
+    "blocks": [
+        {
+        "blockId": 1,
+        "blockType": "EditableBoard",
+        "unit": "rem",
+        "width": 50,
+        "height": 50,
+        "backgroundColor": "#F3F0D1"
+        }
+    ]
+}
