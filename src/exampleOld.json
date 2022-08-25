@@ -8,32 +8,9 @@
             "backgroundColor": "#531fc2"
             }
     ],
-    "elements": [
+    "textBlocks": [
         {
             "elementId": 1,
-            "elementType": "shape",
-            "width": 7,
-            "height": 7,
-            "left": 7.2,
-            "top": 8,
-            "unit": "rem",
-            "className": "pink circle",
-            "text": "Drag"
-        },
-        {
-            "elementId": 2,
-            "elementType": "shape",
-            "width": 5.5,
-            "height": 5.5,
-            "left": 12.5,
-            "top": 11,
-            "unit": "rem",
-            "className": "blue circle",            
-            "text": "me"
-        },
-        {
-            "elementId": 3,
-            "elementType": "textBlock",
             "width": 23.125,
             "height": 4.125,
             "top": 19,
@@ -45,5 +22,25 @@
             "initialFontName": "andada-pro",
             "initialFontStyle": "twin-color-text"
         }
-    ]
+    ],
+    "shapes": [
+        {
+            "width": 7,
+            "height": 7,
+            "left": 7.2,
+            "top": 8,
+            "unit": "rem",
+            "className": "pink circle",
+            "text": "Drag"
+        },
+        {
+            "width": 5.5,
+            "height": 5.5,
+            "left": 12.5,
+            "top": 11,
+            "unit": "rem",
+            "className": "blue circle",            
+            "text": "me"
+        }
+    ]   
 }
