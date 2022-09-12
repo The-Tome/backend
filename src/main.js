@@ -4,6 +4,13 @@ const Tracing = require('@sentry/tracing')
 
 const cors = require('cors')
 
+const bodyParser = require('body-parser')
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const app = express()
 const port = 3001
 
@@ -28,8 +35,14 @@ app.use(Sentry.Handlers.tracingHandler());
 
 app.use(cors());
 
+const data = require("./example.json");
+
 app.get('/', (req, res) => {
-  res.json({hello: 'Hello World'})
+  res.json(data)
+})
+
+app.post('/save', jsonParser, (req, res) => {
+  console.log(req.body)
 })
 
 app.use(Sentry.Handlers.errorHandler());
