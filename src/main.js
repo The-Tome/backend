@@ -6,13 +6,11 @@ const cors = require('cors')
 
 const bodyParser = require('body-parser')
 
-// create application/json parser
-var jsonParser = bodyParser.json()
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
 const app = express()
 const port = 3001
+
+// create application/json parser
+var jsonParser = bodyParser.json()
 
 Sentry.init({
   dsn: "https://70eaaecafa784be9bda52042320bc8e5@o1365087.ingest.sentry.io/6660472",
