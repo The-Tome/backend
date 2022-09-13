@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
 
 app.post('/save', jsonParser, (req, res) => {
   console.log(req.body)
+  res.send('Hi')
 })
 
 app.use(Sentry.Handlers.errorHandler());
