@@ -40,8 +40,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/save', jsonParser, (req, res) => {
-  console.log(req.body)
-  res.send('Hi')
+  req.body.forEach(element => {
+    console.log(element)
+  });
+  res.send('Resopnse from Backend')
 })
 
 app.use(Sentry.Handlers.errorHandler());
