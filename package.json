@@ -22,7 +22,8 @@
     "@sentry/node": "^7.11.0",
     "@sentry/tracing": "^7.11.0",
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "firebase": "^9.10.0"
   },
   "devDependencies": {
     "prisma": "^4.2.1"
