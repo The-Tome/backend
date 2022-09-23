@@ -46,9 +46,10 @@ app.post('/save', jsonParser, (req, res) => {
   res.send('Hi')
 })
 
-app.post('/create', async (req, res) => {
+app.post('/create', jsonParser, (req, res) => {
   const data = req.body;
-  await User.add(data);
+  console.log(data)
+  User.add(data);
   res.send({ msg: 'User Added' })
 })
 
