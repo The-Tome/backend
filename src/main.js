@@ -9,6 +9,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3001
 
+const User = require('./config');
+
 // create application/json parser
 var jsonParser = bodyParser.json()
 
@@ -44,8 +46,22 @@ app.post('/save', jsonParser, (req, res) => {
   res.send('Hi')
 })
 
+app.post('/create', jsonParser, (req, res) => {
+  console.log(req.body)
+  res.send({ msg: 'User Added' })
+})
+
+// app.post('/create', jsonParser, (req, res) => {
+//   const data = req.body;
+//   console.log('Data of Users', data);
+//   // await User.add(data);
+//   res.send({ msg: 'User Added' });
+// });
+
+// app.listen(ports, () => console.log('Up and running'))
+
 app.use(Sentry.Handlers.errorHandler());
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
