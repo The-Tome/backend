@@ -4,7 +4,7 @@
       "boardId": 1,
       "unit": "rem",
       "left": 0,
-      "top": 0,
+      "top": 6,
       "width": 50,
       "height": 50,
       "backgroundColor": "#531fc2"
