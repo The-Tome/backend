@@ -11,6 +11,9 @@ const fs = require('fs');
 const app = express()
 const port = 3001
 
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
+
 // create application/json parser
 var jsonParser = bodyParser.json()
 
@@ -39,7 +42,59 @@ app.get('/', (req, res) => {
   res.sendFile("/workspace/src/example.json")
 })
 
+app.post('/user', jsonParser, async (req, res) => {
+  let id = req.body.id
+  var users = null
+  try {
+    users = await prisma.users.findFirst({
+      where: {
+        'firebase_id': id
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+  console.log(users)
+
+  res.send(users)
+})
+
+app.post('/createUser', jsonParser, async (req, res) => {
+  let user = req.body
+  console.log(user)
+  let userReturn = null
+  let d = null
+
+  try {
+    d = await prisma.users.create({
+      data: {
+        first_name: user.fName,
+        last_name: user.lName,
+        email: user.email,
+        firebase_id: user.id
+      }
+    })
+  } catch (error) {
+    console.error(error)
+  }
+  
+  try {
+    userReturn = await prisma.users.findFirst({
+      where: {
+        'firebase_id': user.id
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+
+  console.log(userReturn)
+
+  res.send(userReturn)
+})
+
 app.post('/save', jsonParser, (req, res) => {
+  // console.log(req.body)
 
   let elements = req.body
 
@@ -49,20 +104,11 @@ app.post('/save', jsonParser, (req, res) => {
               "boardId": 1,
               "unit": "rem",
               "left": 0,
-              "top": 0,
+              "top": 7,
               "width": 50,
               "height": 50,
               "backgroundColor": "#531fc2"
-              },
-              {
-                  "boardId": 2,
-                  "unit": "rem",
-                  "left": 0,
-                  "top": 50,
-                  "width": 50,
-                  "height": 50,
-                  "backgroundColor": "Red"
-                  }
+              }
       ],
       "elements": elements
   }

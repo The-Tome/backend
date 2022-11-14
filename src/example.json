@@ -4,19 +4,10 @@
       "boardId": 1,
       "unit": "rem",
       "left": 0,
-      "top": 0,
+      "top": 7,
       "width": 50,
       "height": 50,
       "backgroundColor": "#531fc2"
-    },
-    {
-      "boardId": 2,
-      "unit": "rem",
-      "left": 0,
-      "top": 50,
-      "width": 50,
-      "height": 50,
-      "backgroundColor": "Red"
     }
   ],
   "elements": [
