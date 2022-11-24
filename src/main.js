@@ -59,6 +59,31 @@ app.post('/user', jsonParser, async (req, res) => {
   res.send(users)
 })
 
+app.post('/getWorlds', jsonParser, async (req, res) => {
+  // let id = req.body.id
+  let id = 'h23BF9jHAlM44U2cixhMcnGxuFh2'
+  var worlds = null
+  try {
+    worlds = await prisma.users.findMany({
+      where: {
+        'firebase_id': id
+      },
+      include: {
+        worlds:{
+          include: {
+            notes: true,
+          },
+        },        
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+  console.log(worlds)
+
+  res.send(worlds)
+})
+
 app.post('/createUser', jsonParser, async (req, res) => {
   let user = req.body
   console.log(user)
