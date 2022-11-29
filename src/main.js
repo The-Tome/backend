@@ -60,8 +60,8 @@ app.post('/user', jsonParser, async (req, res) => {
 })
 
 app.post('/getWorlds', jsonParser, async (req, res) => {
-  // let id = req.body.id
-  let id = 'h23BF9jHAlM44U2cixhMcnGxuFh2'
+  let id = req.body.id
+  // let id = 'h23BF9jHAlM44U2cixhMcnGxuFh2'
   var worlds = null
   try {
     worlds = await prisma.users.findMany({
