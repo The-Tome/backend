@@ -149,6 +149,56 @@ app.post('/save', jsonParser, (req, res) => {
   res.send('Resopnse from Backend')
 })
 
+app.post('/newNote', jsonParser, async (req, res) => {
+  let template = {
+    "boards": [
+      {
+        "boardId": 1,
+        "unit": "rem",
+        "left": 0,
+        "top": 7,
+        "width": 50,
+        "height": 50,
+        "backgroundColor": "#531fc2"
+      }
+    ],
+    "elements": [
+      {
+        "elementId": 1,
+        "elementType": "textBlock",
+        "width": 23.125,
+        "height": 4.125,
+        "left": 3.35,
+        "top": 14,
+        "unit": "rem",
+        "initialText": "New Page",
+        "initialFontColor": "#96ffdc",
+        "initialFontSize": 0.59,
+        "initialFontName": "andada-pro",
+        "initialFontStyle": "twin-color-text"
+      }
+    ]
+  }
+
+  let info = req.body
+  var createNote
+
+  try {
+    createNote = await prisma.notes.create({
+      data: {
+        note_name: info.note_name,
+        json_file: JSON.stringify(template),
+        world_id: info.world_id
+      },
+    })
+    console.log(createNote)
+  } catch (error) {
+    console.error(error)
+  }
+
+  res.send(createNote)
+})
+
 app.use(Sentry.Handlers.errorHandler());
 
 app.listen(port, () => {
