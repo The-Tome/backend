@@ -199,6 +199,25 @@ app.post('/newNote', jsonParser, async (req, res) => {
   res.send(createNote)
 })
 
+app.post('/newWorld', jsonParser, async (req, res) => {
+  let info = req.body
+  var createWorld
+
+  try {
+    createWorld = await prisma.worlds.create({
+      data: {
+        world_name: info.world_name,
+        user_id: info.user_id
+      },
+    })
+    console.log(createWorld)
+  } catch (error) {
+    console.error(error)
+  }
+
+  res.send(createWorld)
+})
+
 app.use(Sentry.Handlers.errorHandler());
 
 app.listen(port, () => {
