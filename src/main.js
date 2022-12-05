@@ -187,7 +187,7 @@ app.post('/newNote', jsonParser, async (req, res) => {
     createNote = await prisma.notes.create({
       data: {
         note_name: info.note_name,
-        json_file: JSON.stringify(template),
+        json_file: template,
         world_id: info.world_id
       },
     })

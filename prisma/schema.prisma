@@ -10,7 +10,7 @@ datasource db {
 model notes {
   note_id   Int     @id @default(autoincrement())
   note_name String? @db.VarChar(255)
-  json_file String? @db.VarChar
+  json_file Json? 
   world_id  Int?
   worlds    worlds? @relation(fields: [world_id], references: [world_id], onDelete: NoAction, onUpdate: NoAction)
 }
