@@ -20,7 +20,7 @@ model users {
   first_name  String?  @db.VarChar(255)
   last_name   String?  @db.VarChar(255)
   email       String?  @db.VarChar(255)
-  firebase_id String?  @db.VarChar(255)
+  firebase_id String?  @db.VarChar(255) @unique
   worlds      worlds[]
 }
 

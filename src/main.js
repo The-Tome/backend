@@ -64,7 +64,7 @@ app.post('/getWorlds', jsonParser, async (req, res) => {
   // let id = 'h23BF9jHAlM44U2cixhMcnGxuFh2'
   var worlds = null
   try {
-    worlds = await prisma.users.findFirst({
+    worlds = await prisma.users.findUnique({
       where: {
         'firebase_id': id
       },
